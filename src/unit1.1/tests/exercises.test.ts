@@ -11,7 +11,6 @@ function initializeTestArray(m: number) {
   for (let i = 0; i < m; i++) arr[i] = getRandomInt(0, m);
   return arr;
 }
-
 describe("histogram", () => {
   let a: number[];
   let m: number;
