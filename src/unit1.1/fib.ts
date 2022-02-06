@@ -1,4 +1,4 @@
-import { promptRevursively } from "./run";
+import { promptRevursively } from "../utils/run";
 
 function fib(n: number): number {
   if (n == 0) return 0;

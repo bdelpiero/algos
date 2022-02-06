@@ -36,6 +36,6 @@ describe("histogram", () => {
 
   it("the sum of the values in the returned array should be equal to a.length", () => {
     const sumOfValues = resultArr.reduce((a, b) => a + b, 0);
-    expect(sumOfValues).toBe(resultArr.length);
+    expect(sumOfValues).toBe(a.length);
   });
 });
