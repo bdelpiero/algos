@@ -1,4 +1,4 @@
-import { histogram } from "../exercises";
+import { histogram } from "../histogram";
 
 function getRandomInt(min: number, max: number) {
   min = Math.ceil(min);
@@ -11,6 +11,7 @@ function initializeTestArray(m: number) {
   for (let i = 0; i < m; i++) arr[i] = getRandomInt(0, m);
   return arr;
 }
+
 describe("histogram", () => {
   let a: number[];
   let m: number;
