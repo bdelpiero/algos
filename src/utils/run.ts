@@ -8,6 +8,10 @@ const rl = readline.createInterface({
 
 console.log("\n", "Type 'exit' to stop the program", "\n");
 
+function areAllArgs(args: number[]) {
+  return args.every(n => Number.isInteger(n));
+}
+
 export const promptRevursively = (
   fn: Function,
   propmptMsg: string = "Input: ",
@@ -15,11 +19,13 @@ export const promptRevursively = (
 ) => {
   rl.question(`${propmptMsg}`, function (arg) {
     if (arg == "exit") return rl.close();
+    const processedArgs = arg.split(" ").map(arg => +arg);
 
-    const n = +arg;
-
-    if (Number.isInteger(n)) console.log(`Solution: ${fn(n)}`);
-    else console.log(`${errorMsg}`);
+    if (areAllArgs(processedArgs)) {
+      console.log(`Solution: ${fn(...processedArgs)}`);
+    } else {
+      console.log(`${errorMsg}`);
+    }
     promptRevursively(fn, propmptMsg, errorMsg);
   });
 };
