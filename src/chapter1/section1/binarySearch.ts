@@ -1,5 +1,5 @@
-import { arrayFromFile } from "../utils/readFile";
-import { promptRevursively } from "../utils/run";
+import { arrayFromFile } from "../../utils/readFile";
+import { promptRevursively } from "../../utils/run";
 
 function rank(
   key: number,
