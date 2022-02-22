@@ -1,16 +1,5 @@
 import { histogram } from "../histogram";
-
-function getRandomInt(min: number, max: number) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-}
-
-function initializeTestArray(m: number) {
-  const arr: number[] = Array(m);
-  for (let i = 0; i < m; i++) arr[i] = getRandomInt(0, m);
-  return arr;
-}
+import { getRandomInt, initializeTestArray } from "../../../utils/functions";
 
 describe("histogram", () => {
   let a: number[];
