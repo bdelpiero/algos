@@ -1,6 +1,6 @@
 import { relativePrimeCheck } from "../arrayExercise";
 
-test("creates an N-by-N boolean array", () => {
+it("creates an N-by-N boolean array", () => {
   const n = 10;
   const arr = relativePrimeCheck(n);
   expect(arr.length).toBe(n);
@@ -9,7 +9,7 @@ test("creates an N-by-N boolean array", () => {
   expect(typeof arr[n - 1][n - 1]).toBe("boolean");
 });
 
-test("a[i][j] is true if i and j are relatively prime (have no common factors), and false otherwise", () => {
+it("a[i][j] is true if i and j are relatively prime (have no common factors), and false otherwise", () => {
   const arr = relativePrimeCheck(10);
   console.log(arr);
 
