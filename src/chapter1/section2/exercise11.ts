@@ -48,28 +48,22 @@ export class SmartDate implements ISmartDate {
     return y % 4 === 0;
   }
 
+  public toString() {
+    return this.getMonth() + "/" + this.getDay() + "/" + this.getYear();
+  }
+
   public dayOfTheWeek() {
-    // begins from saturday as it was the first day of the millenium
     const daysInWeek = [
-      "Saturday",
       "Sunday",
       "Monday",
       "Tuesday",
       "Wednesday",
       "Thursday",
       "Friday",
+      "Saturday",
     ];
 
-    const years = this.getYear() - 2000;
-    const yearsAsDays =
-      years === 0 ? 0 : Math.floor(years / 4) + 1 + years * 365;
-    const monthsPassed = SmartDate.daysInMonth.slice(0, this.getMonth() - 1);
-    const monthsAsDays = !monthsPassed.length
-      ? 0
-      : monthsPassed.reduce((acc, current) => (acc += current));
-
-    const total = yearsAsDays + monthsAsDays + this.getDay();
-    const dayIndex = total % 7 === 0 ? 7 : (total % 7) - 1;
+    const dayIndex = new Date(this.toString()).getDay();
     return daysInWeek[dayIndex];
   }
 }
