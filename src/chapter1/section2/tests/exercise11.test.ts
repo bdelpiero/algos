@@ -1,4 +1,3 @@
-import { notDeepEqual } from "assert";
 import { SmartDate } from "../exercise11";
 
 describe("SmartDate", () => {
@@ -20,7 +19,6 @@ describe("SmartDate", () => {
   it("covers days > days in month", () => {
     expect(() => new SmartDate(11, 30, 1990)).not.toThrow("invalid day");
     expect(() => new SmartDate(1, 31, 1990)).not.toThrow("invalid day");
-
     expect(() => new SmartDate(11, 32, 1990)).toThrow("invalid day");
     expect(() => new SmartDate(2, 30, 1990)).toThrow("invalid day");
     expect(() => new SmartDate(4, 31, 1990)).toThrow("invalid day");
@@ -31,5 +29,16 @@ describe("SmartDate", () => {
     expect(() => new SmartDate(2, 29, 2000)).not.toThrow("invalid day");
     expect(() => new SmartDate(2, 29, 1991)).toThrow("invalid day");
     expect(() => new SmartDate(2, 29, 1900)).toThrow("invalid day");
+  });
+
+  it("dayOfTheWeek() should return the correct day of the week", () => {
+    const firstDateMilenium = new SmartDate(1, 1, 2000);
+    expect(firstDateMilenium.dayOfTheWeek()).toBe("Saturday");
+    const randomDate1 = new SmartDate(4, 2, 2020);
+    expect(randomDate1.dayOfTheWeek()).toBe("Thursday");
+    const randomDate2 = new SmartDate(6, 18, 2008);
+    expect(randomDate2.dayOfTheWeek()).toBe("Wednesday");
+    const randomDate3 = new SmartDate(1, 22, 2006);
+    expect(randomDate3.dayOfTheWeek()).toBe("Sunday");
   });
 });
