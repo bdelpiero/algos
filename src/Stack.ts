@@ -1,12 +1,12 @@
-interface IStack {
-  peek: any;
-  push: (value: any) => void;
+interface IStack<Item> {
+  peek: Item;
+  push: (value: Item) => void;
   size: number;
 }
 
-export default class Stack implements IStack {
+export default class Stack<Item> implements IStack<Item> {
   private top: number;
-  private items: { [key: number]: any };
+  private items: { [key: number]: Item };
 
   constructor() {
     this.top = -1;
@@ -21,7 +21,7 @@ export default class Stack implements IStack {
     return this.top + 1;
   }
 
-  push(value: any) {
+  push(value: Item) {
     this.items[++this.top] = value;
   }
 
