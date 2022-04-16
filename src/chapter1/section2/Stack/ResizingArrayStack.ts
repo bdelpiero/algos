@@ -46,7 +46,41 @@ export default class ResizingArrayStack<Item>
   }
 
   // Iterator
-  [Symbol.iterator](): Iterator<Item> {
-    throw new Error("Method not implemented.");
+  [Symbol.iterator](): StackIterator<Item> {
+    return new StackIterator(this.items, this.top);
+  }
+}
+
+// https://dev.to/gsarciotto/iterators-in-typescript-1d78
+
+class StackIterator<Item> implements Iterator<Item> {
+  private index: number;
+  private done: boolean;
+
+  constructor(private items: Item[], private top: number) {
+    this.index = this.top;
+    this.done = false;
+  }
+
+  next(): IteratorResult<Item, number | undefined> {
+    if (this.done)
+      return {
+        done: this.done,
+        value: undefined,
+      };
+
+    if (this.index === 0) {
+      this.done = true;
+      return {
+        done: this.done,
+        value: this.index,
+      };
+    }
+    const value = this.items[--this.index];
+    //this.index--;
+    return {
+      done: false,
+      value,
+    };
   }
 }

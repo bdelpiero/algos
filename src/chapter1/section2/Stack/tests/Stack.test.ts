@@ -1,4 +1,4 @@
 import Stack from "../Stack";
-import { commonStacktest } from "./common.test";
+import { commonStackTest } from "./common.test";
 
-commonStacktest("Stack", Stack);
+commonStackTest("Stack", Stack);

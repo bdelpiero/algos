@@ -9,7 +9,7 @@ export interface StackContructor<Item> {
   new (): IStack<Item>;
 }
 
-export const commonStacktest = (
+export const commonStackTest = (
   implName: string,
   implStack: StackContructor<string>
 ) => {
