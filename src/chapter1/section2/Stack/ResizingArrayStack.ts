@@ -1,9 +1,4 @@
-interface IStack<Item> {
-  push(value: Item): void;
-  pop(): Item;
-  isEmpty(): boolean;
-  size: number;
-}
+import { IStack } from "./tests/common";
 
 /**
  * Implementation of stack that doesn't rely on javascript's array resizing.

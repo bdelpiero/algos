@@ -1,5 +1,5 @@
 import ResizingArrayStack from "../ResizingArrayStack";
-import { commonStackTest } from "./common.test";
+import { commonStackTest } from "./common";
 
 commonStackTest("ResizingArrayStack", ResizingArrayStack);
 

@@ -1,9 +1,4 @@
-import { IStack } from "./tests/common.test";
-/* export interface IStack<Item> {
-  peek: Item;
-  push: (value: Item) => void;
-  size: number;
-} */
+import { IStack } from "./tests/common";
 
 export default class Stack<Item> implements IStack<Item> {
   private top: number;
