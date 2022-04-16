@@ -1,3 +1,4 @@
+import { off } from "process";
 import { IStack } from "./tests/common";
 
 /**
@@ -40,10 +41,17 @@ export default class ResizingArrayStack<Item>
     return item;
   }
 
-  // Iterator
-  [Symbol.iterator](): StackIterator<Item> {
-    return new StackIterator(this.items, this.top);
+  // Generator that replaces Iterator implementation
+  *[Symbol.iterator]() {
+    for (let i = this.top; i > 0; i--) {
+      yield this.items[--this.top];
+    }
   }
+
+  // Iterator
+  /* [Symbol.iterator](): StackIterator<Item> {
+    return new StackIterator(this.items, this.top);
+  } */
 }
 
 // https://dev.to/gsarciotto/iterators-in-typescript-1d78
@@ -68,11 +76,10 @@ class StackIterator<Item> implements Iterator<Item> {
       this.done = true;
       return {
         done: this.done,
-        value: this.index,
+        value: undefined,
       };
     }
     const value = this.items[--this.index];
-    //this.index--;
     return {
       done: false,
       value,

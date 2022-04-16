@@ -17,7 +17,7 @@ describe("ResizingArrayStackIterator", () => {
     const iterator = stack[Symbol.iterator]();
     expect(iterator.next()).toEqual({ done: false, value: "i" });
     expect(iterator.next()).toEqual({ done: false, value: "h" });
-    expect(iterator.next()).toEqual({ done: true, value: 0 });
+    expect(iterator.next()).toEqual({ done: true, value: undefined });
     expect(iterator.next()).toEqual({ done: true, value: undefined });
   });
   it("iterates over the stack in the correct order with for.. of", () => {
