@@ -43,8 +43,9 @@ export default class ResizingArrayStack<Item>
 
   // Generator that replaces Iterator implementation
   *[Symbol.iterator]() {
+    let index = this.top;
     for (let i = this.top; i > 0; i--) {
-      yield this.items[--this.top];
+      yield this.items[--index];
     }
   }
 

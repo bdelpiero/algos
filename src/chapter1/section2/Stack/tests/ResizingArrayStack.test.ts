@@ -33,5 +33,12 @@ describe("ResizingArrayStackIterator", () => {
       result += item;
     }
     expect(result).toBe("hello");
+
+    stack.pop();
+    let newResult = "";
+    for (const item of stack) {
+      newResult += item;
+    }
+    expect(newResult).toBe("ello");
   });
 });
