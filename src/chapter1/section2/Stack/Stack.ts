@@ -1,12 +1,13 @@
-interface IStack<Item> {
+import { IStack } from "./tests/common.test";
+/* export interface IStack<Item> {
   peek: Item;
   push: (value: Item) => void;
   size: number;
-}
+} */
 
 export default class Stack<Item> implements IStack<Item> {
-  private items: Item[];
   private top: number;
+  private items: Item[];
 
   constructor() {
     this.top = -1;
@@ -26,6 +27,8 @@ export default class Stack<Item> implements IStack<Item> {
   }
 
   pop() {
+    const item = this.items[this.top];
     delete this.items[this.top--];
+    return item;
   }
 }
