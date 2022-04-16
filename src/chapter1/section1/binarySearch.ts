@@ -9,7 +9,6 @@ function rank(
   depth: number = 0
 ): number {
   const currentTrace = `${" ".repeat(depth)}` + lo + "" + hi;
-  console.log(currentTrace);
 
   if (lo > hi) return -1;
   const mid = Math.floor(lo + (hi - lo) / 2);
@@ -30,8 +29,7 @@ function wrapper(fn: Function, ...rest: any[]) {
 
 function main() {
   const file = arrayFromFile();
-  const sortedFile = file.sort().filter(char => char !== "");
-  console.log(sortedFile);
+  const sortedFile = file.sort().filter((char) => char !== "");
   const wrappedCall = wrapper(rank, sortedFile);
   promptRevursively(wrappedCall, undefined, undefined);
 }

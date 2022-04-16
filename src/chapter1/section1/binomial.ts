@@ -14,5 +14,3 @@ function binomial(n: number, k: number, p: number, results: any = {}): number {
 
   return results[n][k];
 }
-
-console.log(binomial(10, 5, 0.25));

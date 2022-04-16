@@ -11,7 +11,6 @@ it("creates an N-by-N boolean array", () => {
 
 it("a[i][j] is true if i and j are relatively prime (have no common factors), and false otherwise", () => {
   const arr = relativePrimeCheck(10);
-  console.log(arr);
 
   expect(arr[5][3]).toBe(true);
   expect(arr[2][7]).toBe(true);
