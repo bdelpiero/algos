@@ -1,0 +1,79 @@
+{
+  "fileCounts": {},
+  "anys": [
+    {
+      "file": "src/chapter1/section1/binomial.ts",
+      "line": 0,
+      "character": 51,
+      "text": "results",
+      "kind": 1
+    },
+    {
+      "file": "src/chapter1/section1/binomial.ts",
+      "line": 1,
+      "character": 6,
+      "text": "results",
+      "kind": 1
+    },
+    {
+      "file": "src/chapter1/section1/binomial.ts",
+      "line": 1,
+      "character": 20,
+      "text": "results",
+      "kind": 1
+    },
+    {
+      "file": "src/chapter1/section1/binomial.ts",
+      "line": 1,
+      "character": 42,
+      "text": "results",
+      "kind": 1
+    },
+    {
+      "file": "src/chapter1/section1/binomial.ts",
+      "line": 9,
+      "character": 7,
+      "text": "results",
+      "kind": 1
+    },
+    {
+      "file": "src/chapter1/section1/binomial.ts",
+      "line": 9,
+      "character": 19,
+      "text": "results",
+      "kind": 1
+    },
+    {
+      "file": "src/chapter1/section1/binomial.ts",
+      "line": 10,
+      "character": 2,
+      "text": "results",
+      "kind": 1
+    },
+    {
+      "file": "src/chapter1/section1/binomial.ts",
+      "line": 11,
+      "character": 36,
+      "text": "results",
+      "kind": 1
+    },
+    {
+      "file": "src/chapter1/section1/binomial.ts",
+      "line": 12,
+      "character": 34,
+      "text": "results",
+      "kind": 1
+    },
+    {
+      "file": "src/chapter1/section1/binomial.ts",
+      "line": 14,
+      "character": 9,
+      "text": "results",
+      "kind": 1
+    }
+  ],
+  "percentage": 99.03474903474904,
+  "total": 1036,
+  "covered": 1026,
+  "uncovered": 10
+}

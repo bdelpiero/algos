@@ -8,7 +8,8 @@
     "start": "node ./bin/app.js",
     "dev": "ts-node ./src/app.ts",
     "test": "jest --watchAll --verbose",
-    "ci:test": "jest --verbose"
+    "ci:test": "jest --verbose",
+    "ts-coverage": "typescript-coverage-report"
   },
   "dependencies": {
     "@types/node": "^17.0.13",
@@ -18,6 +19,7 @@
     "@types/jest": "^27.4.0",
     "jest": "^27.4.7",
     "ts-jest": "^27.1.3",
-    "ts-node": "^10.4.0"
+    "ts-node": "^10.4.0",
+    "typescript-coverage-report": "^0.6.4"
   }
 }
