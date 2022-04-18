@@ -1,5 +1,5 @@
 import { histogram } from "../histogram";
-import { getRandomInt, initializeTestArray } from "../../../utils/functions";
+import { getRandomInt, initializeTestArray } from "utils/functions";
 
 describe("histogram", () => {
   let a: number[];

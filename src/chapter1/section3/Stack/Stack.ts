@@ -34,11 +34,10 @@ export default class Stack<Item> implements IStack<Item> {
 
   public push(item: Item) {
     const oldFirst = this.first;
-    const first: Node<Item> = {
+    this.first = {
       item: item,
       next: oldFirst,
     };
-    this.first = first;
     this.totalItems++;
   }
 
@@ -52,7 +51,6 @@ export default class Stack<Item> implements IStack<Item> {
 
   // Generator that replaces Iterator implementation
   *[Symbol.iterator]() {
-    //let index = this.top;
     for (let node = this.first; node !== null; node = node.next) {
       yield node.item;
     }

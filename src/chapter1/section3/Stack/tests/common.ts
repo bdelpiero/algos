@@ -44,8 +44,3 @@ export const commonStackTest = (
     });
   });
 };
-
-// just to avoid warning, that no tests in test file
-/* describe("Common tests for Stack implementations", () => {
-  test("should be used per implementation", () => {});
-}); */
