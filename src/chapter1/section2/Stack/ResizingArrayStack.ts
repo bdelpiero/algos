@@ -1,4 +1,3 @@
-import { off } from "process";
 import { IStack } from "./tests/common";
 
 /**
@@ -34,8 +33,8 @@ export default class ResizingArrayStack<Item>
     return this.items[this.top - 1];
   }
 
-  public pop(): Item {
-    const item = this.items[--this.top];
+  public pop() {
+    const item = this.items[--this.top] ?? null;
     if (this.top > 0 && this.top == this.items.length / 4)
       this.resize(this.items.length / 2);
     return item;

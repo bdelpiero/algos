@@ -1,29 +1,60 @@
 import { IStack } from "./tests/common";
 
+type Node<Item> = {
+  item: Item | null;
+  next: Node<Item> | null;
+} | null;
+
+/**
+ * Most efficient implementation, using a linked list:
+ * - It can be used for any type of data.
+ * - The space required is always proportional to the size of the collection.
+ * - The time per operation is always independent of the size of the collection
+ */
 export default class Stack<Item> implements IStack<Item> {
-  private top: number;
-  private items: Item[];
+  private first: Node<Item>;
+  private totalItems: number;
 
   constructor() {
-    this.top = -1;
-    this.items = [];
+    this.first = null;
+    this.totalItems = 0;
+  }
+
+  public isEmpty() {
+    return this.first === null;
   }
 
   get peek() {
-    return this.items[this.top];
+    return this.first?.item ?? null;
   }
 
   get size() {
-    return this.top + 1;
+    return this.totalItems;
   }
 
-  push(value: Item) {
-    this.items[++this.top] = value;
+  public push(item: Item) {
+    const oldFirst = this.first;
+    const first: Node<Item> = {
+      item: item,
+      next: oldFirst,
+    };
+    this.first = first;
+    this.totalItems++;
   }
 
-  pop() {
-    const item = this.items[this.top];
-    delete this.items[this.top--];
+  public pop() {
+    if (!this.first) return null;
+    const item = this.first.item;
+    this.first = this.first.next;
+    this.totalItems--;
     return item;
+  }
+
+  // Generator that replaces Iterator implementation
+  *[Symbol.iterator]() {
+    //let index = this.top;
+    for (let node = this.first; node !== null; node = node.next) {
+      yield node.item;
+    }
   }
 }

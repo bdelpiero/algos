@@ -1,8 +1,8 @@
 export interface IStack<Item> {
-  peek: Item;
   size: number;
   push: (value: Item) => void;
-  pop?: () => Item;
+  pop: () => Item | null;
+  peek?: Item | null;
 }
 
 export interface StackContructor<Item> {
