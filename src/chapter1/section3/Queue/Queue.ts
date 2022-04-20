@@ -1,6 +1,6 @@
 import Node from "../Node";
 
-export default class Queue<Item> {
+export default class Queue<Item> implements Iterable<Item | null> {
   private first: Node<Item> | null;
   private last: Node<Item> | null;
   private count: number;

@@ -7,7 +7,9 @@ import Node from "../Node";
  * - The space required is always proportional to the size of the collection.
  * - The time per operation is always independent of the size of the collection
  */
-export default class Stack<Item> implements IStack<Item> {
+export default class Stack<Item>
+  implements IStack<Item>, Iterable<Item | null>
+{
   private first: Node<Item> | null;
   private count: number;
 
