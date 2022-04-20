@@ -1,9 +1,5 @@
 import { IStack } from "./tests/common";
-
-type Node<Item> = {
-  item: Item | null;
-  next: Node<Item> | null;
-} | null;
+import Node from "../Node";
 
 /**
  * Most efficient implementation, using a linked list:
@@ -12,12 +8,12 @@ type Node<Item> = {
  * - The time per operation is always independent of the size of the collection
  */
 export default class Stack<Item> implements IStack<Item> {
-  private first: Node<Item>;
-  private totalItems: number;
+  private first: Node<Item> | null;
+  private count: number;
 
   constructor() {
     this.first = null;
-    this.totalItems = 0;
+    this.count = 0;
   }
 
   public isEmpty() {
@@ -25,34 +21,31 @@ export default class Stack<Item> implements IStack<Item> {
   }
 
   get peek() {
-    return this.first?.item ?? null;
+    return this.first?.value ?? null;
   }
 
   get size() {
-    return this.totalItems;
+    return this.count;
   }
 
   public push(item: Item) {
     const oldFirst = this.first;
-    this.first = {
-      item: item,
-      next: oldFirst,
-    };
-    this.totalItems++;
+    this.first = new Node(item, oldFirst);
+    this.count++;
   }
 
   public pop() {
     if (!this.first) return null;
-    const item = this.first.item;
+    const item = this.first.value;
     this.first = this.first.next;
-    this.totalItems--;
+    this.count--;
     return item;
   }
 
   // Generator that replaces Iterator implementation
   *[Symbol.iterator]() {
     for (let node = this.first; node !== null; node = node.next) {
-      yield node.item;
+      yield node.value;
     }
   }
 }
