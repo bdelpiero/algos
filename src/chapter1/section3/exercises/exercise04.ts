@@ -1,6 +1,6 @@
 import Stack from "../Stack/Stack";
 
-export function checkParentheses(parentheses: string) {
+export function areParenthesesBalanced(parentheses: string) {
   const parensMap: Record<string, string> = { "[": "]", "(": ")", "{": "}" };
   const stack = new Stack<string>();
 
