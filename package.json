@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node ./bin/app.js",
     "dev": "ts-node ./src/app.ts",
-    "test": "jest --watchAll --verbose",
+    "test": "jest --watch --verbose",
     "ci:test": "jest --verbose",
     "ts-coverage": "typescript-coverage-report"
   },
