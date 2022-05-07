@@ -61,10 +61,37 @@ export default class LinkedList<Item> {
     for (let node: INode<Item> = this.first; node != null; node = node.next) {
       if (++count === k) {
         if (!node.next) throw new Error("Out of range");
-        const deletedValue = node.next.value;
         node.next = node.next.next;
-        return deletedValue;
       }
+    }
+  }
+
+  public removeAfter(node: INode<Item>) {
+    if (!node?.next) return;
+    for (let current: INode<Item> = this.first; current != null; current = current.next) {
+      if (node.value === current.value) current.next = current.next!.next;
+    }
+    return;
+  }
+
+  public getNodeByValue(key: Item) {
+    for (let node: INode<Item> = this.first; node != null; node = node.next) {
+      if (node?.value === key) {
+        return node;
+      }
+    }
+  }
+
+/*   private _removeNext(node: INode<Item>) {
+    if (!node?.next) throw new Error("Node cant be null");
+    const deletedValue = node.next.value;
+    node!.next = node.next.next;
+    return deletedValue;
+  } */
+
+  *[Symbol.iterator]() {
+    for (let node = this.first; node !== null; node = node.next) {
+      yield node.value;
     }
   }
 }

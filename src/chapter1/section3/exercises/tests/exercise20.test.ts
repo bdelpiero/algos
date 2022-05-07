@@ -9,7 +9,13 @@ describe("LinkedList", () => {
     list.add("l");
     list.add("o");
 
-    expect(list.delete(2)).toBe("e")
+    list.delete(2)
+
+    let listAfterRemove = '' 
+    for (const item of list) {
+      listAfterRemove += item;
+    }
+    expect(listAfterRemove).toBe("hllo")
     expect(() => list.delete(5)).toThrowError("Out of range")
   });
 });
