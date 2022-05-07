@@ -1,5 +1,12 @@
 import LinkedList from "../../LinkedList";
-import {findInList} from "../exercise21";
+
+export function findInList(list: LinkedList<string>, key: string) {
+  for (const item of list) {
+    if (item === key) return true;
+  }
+  return false;
+}
+
 
 describe("LinkedList", () => {
   it("find() takes a linked list and a string key as arguments and returns true if some node in the list has key as its item field, false otherwise.", () => {

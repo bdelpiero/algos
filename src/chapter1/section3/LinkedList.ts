@@ -1,6 +1,6 @@
 import Node from "./Node";
 
-type INode<Item> = Node<Item> | null;
+export type INode<Item> = Node<Item> | null;
 
 export default class LinkedList<Item> {
   private first: INode<Item>;
@@ -19,6 +19,10 @@ export default class LinkedList<Item> {
       last = node;
     }
     return last?.value ?? null;
+  }
+
+  get firstNode() {
+    return this.first;
   }
 
   public add(value: Item) {
@@ -82,12 +86,11 @@ export default class LinkedList<Item> {
     }
   }
 
-/*   private _removeNext(node: INode<Item>) {
-    if (!node?.next) throw new Error("Node cant be null");
-    const deletedValue = node.next.value;
-    node!.next = node.next.next;
-    return deletedValue;
-  } */
+  public insertAfter(first: INode<Item>, second: INode<Item>) {
+    if (!first || !second) return;
+    second.next = first.next;
+    first.next = second;
+  }
 
   *[Symbol.iterator]() {
     for (let node = this.first; node !== null; node = node.next) {
