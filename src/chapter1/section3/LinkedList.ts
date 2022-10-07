@@ -1,6 +1,17 @@
-import Node from "./Node";
+import Node from './Node';
 
 export type INode<Item> = Node<Item> | null;
+
+// not added as class method because it works only for string values
+export function buildTextFromList(list: LinkedList<string>) {
+  let listAfterRemove = '';
+
+  for (const item of list) {
+    listAfterRemove += item;
+  }
+
+  return listAfterRemove;
+}
 
 export default class LinkedList<Item> {
   private first: INode<Item>;
@@ -15,9 +26,11 @@ export default class LinkedList<Item> {
 
   get lastNode() {
     let last: INode<Item> = null;
+
     for (let node = this.first; node != null; node = node.next) {
       last = node;
     }
+
     return last?.value ?? null;
   }
 
@@ -30,6 +43,7 @@ export default class LinkedList<Item> {
       this.first = new Node(value, null);
       return;
     }
+
     for (let node: INode<Item> = this.first; node != null; node = node.next) {
       if (node.next == null) {
         node.next = new Node(value, null);
@@ -49,33 +63,40 @@ export default class LinkedList<Item> {
         node.next = null;
       }
     }
+
     return last?.value ?? null;
   }
 
   public delete(k: number) {
-    if (this.isEmpty()) throw new Error("Empty list");
+    if (this.isEmpty()) throw new Error('Empty list');
 
-    if (k === 1) {
-      const deletedValue = this.first!.value;
-      this.first = this.first!.next;
-      return deletedValue;
+    if (k === 0) {
+      this.first = this.first?.next ?? null;
+      return;
     }
 
-    let count = 1;
+    let count = 0;
     for (let node: INode<Item> = this.first; node != null; node = node.next) {
       if (++count === k) {
-        if (!node.next) throw new Error("Out of range");
+        if (!node?.next) break;
         node.next = node.next.next;
+        return;
       }
     }
+
+    throw new Error('Out of range');
   }
 
   public removeAfter(node: INode<Item>) {
     if (!node?.next) return;
-    for (let current: INode<Item> = this.first; current != null; current = current.next) {
+
+    for (
+      let current: INode<Item> = this.first;
+      current != null;
+      current = current.next
+    ) {
       if (node.value === current.value) current.next = current.next!.next;
     }
-    return;
   }
 
   public getNodeByValue(key: Item) {
