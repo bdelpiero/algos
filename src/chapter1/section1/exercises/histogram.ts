@@ -5,13 +5,13 @@ a.length.
  */
 
 function numOfAppearances(a: number[], i: number) {
-  return a.filter((n) => n === i).length;
+  return a.filter((n) => n === i).length
 }
 
 export function histogram(a: number[], m: number) {
-  const resultArr = Array(m);
+  const resultArr = Array(m)
   for (let i = 0; i < m; i++) {
-    resultArr[i] = numOfAppearances(a, i);
+    resultArr[i] = numOfAppearances(a, i)
   }
-  return resultArr;
+  return resultArr
 }

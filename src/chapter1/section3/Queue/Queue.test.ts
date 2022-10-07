@@ -1,50 +1,50 @@
-import Queue from "./Queue";
+import Queue from './Queue'
 
-describe("Queue", () => {
-  let queue: Queue<string>;
+describe('Queue', () => {
+  let queue: Queue<string>
 
   beforeEach(() => {
-    queue = new Queue();
-  });
+    queue = new Queue()
+  })
 
-  it("is created empty", () => {
-    expect(queue.size).toBe(0);
-    expect(queue.isEmpty()).toBe(true);
-  });
+  it('is created empty', () => {
+    expect(queue.size).toBe(0)
+    expect(queue.isEmpty()).toBe(true)
+  })
 
-  it("can enqueue items", () => {
-    queue.enqueue("🥑");
-    expect(queue.size).toBe(1);
-    queue.enqueue("🌽");
-    expect(queue.size).toBe(2);
-  });
+  it('can enqueue items', () => {
+    queue.enqueue('🥑')
+    expect(queue.size).toBe(1)
+    queue.enqueue('🌽')
+    expect(queue.size).toBe(2)
+  })
 
-  it("can dequeue items", () => {
-    queue.enqueue("🥑");
-    queue.enqueue("🌽");
-    const dequeuedItem = queue.dequeue();
-    expect(queue.size).toBe(1);
-    expect(dequeuedItem).toBe("🥑");
-  });
+  it('can dequeue items', () => {
+    queue.enqueue('🥑')
+    queue.enqueue('🌽')
+    const dequeuedItem = queue.dequeue()
+    expect(queue.size).toBe(1)
+    expect(dequeuedItem).toBe('🥑')
+  })
 
-  it("iterates over the queue in the correct order with for.. of", () => {
-    queue.enqueue("h");
-    queue.enqueue("e");
-    queue.enqueue("l");
-    queue.enqueue("l");
-    queue.enqueue("o");
+  it('iterates over the queue in the correct order with for.. of', () => {
+    queue.enqueue('h')
+    queue.enqueue('e')
+    queue.enqueue('l')
+    queue.enqueue('l')
+    queue.enqueue('o')
 
-    let result = "";
+    let result = ''
     for (const item of queue) {
-      result += item;
+      result += item
     }
-    expect(result).toBe("hello");
+    expect(result).toBe('hello')
 
-    queue.dequeue();
-    let newResult = "";
+    queue.dequeue()
+    let newResult = ''
     for (const item of queue) {
-      newResult += item;
+      newResult += item
     }
-    expect(newResult).toBe("ello");
-  });
-});
+    expect(newResult).toBe('ello')
+  })
+})

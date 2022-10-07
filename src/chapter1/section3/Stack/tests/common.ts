@@ -1,12 +1,12 @@
 export interface IStack<Item> {
-  size: number;
-  push: (value: Item) => void;
-  pop: () => Item | null;
-  peek?: Item | null;
+  size: number
+  push: (value: Item) => void
+  pop: () => Item | null
+  peek?: Item | null
 }
 
 export interface StackContructor<Item> {
-  new (): IStack<Item>;
+  new (): IStack<Item>
 }
 
 export const commonStackTest = (
@@ -14,33 +14,33 @@ export const commonStackTest = (
   implStack: StackContructor<string>
 ) => {
   describe(`${implName}`, () => {
-    let stack: IStack<string>;
+    let stack: IStack<string>
 
     beforeEach(() => {
-      stack = new implStack();
-    });
+      stack = new implStack()
+    })
 
-    it("is created empty", () => {
-      expect(stack.size).toBe(0);
-    });
+    it('is created empty', () => {
+      expect(stack.size).toBe(0)
+    })
 
-    it("can push to the top", () => {
-      stack.push("🥑");
-      expect(stack.size).toBe(1);
-      expect(stack.peek).toBe("🥑");
+    it('can push to the top', () => {
+      stack.push('🥑')
+      expect(stack.size).toBe(1)
+      expect(stack.peek).toBe('🥑')
 
-      stack.push("🌽");
-      expect(stack.size).toBe(2);
-      expect(stack.peek).toBe("🌽");
-    });
+      stack.push('🌽')
+      expect(stack.size).toBe(2)
+      expect(stack.peek).toBe('🌽')
+    })
 
-    it("can pop off", () => {
-      if (!stack.pop) return;
-      stack.push("🥑");
-      stack.push("🌽");
-      stack.pop();
-      expect(stack.size).toBe(1);
-      expect(stack.peek).toBe("🥑");
-    });
-  });
-};
+    it('can pop off', () => {
+      if (!stack.pop) return
+      stack.push('🥑')
+      stack.push('🌽')
+      stack.pop()
+      expect(stack.size).toBe(1)
+      expect(stack.peek).toBe('🥑')
+    })
+  })
+}
