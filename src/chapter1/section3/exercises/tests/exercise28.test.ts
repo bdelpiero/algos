@@ -1,10 +1,9 @@
 import LinkedList from '../../LinkedList'
 import { INode } from '../../LinkedList'
 
-export function max(node: INode<number>, currentMax = 0): number {
-  if (!node?.value) return currentMax
-  if (node.value > currentMax) currentMax = node.value
-  return max(node.next, currentMax)
+function max(node: INode<number>, maxVal = 0): number {
+  if (!node || !node.value) return maxVal
+  return max(node.next, node.value > maxVal ? node.value : maxVal)
 }
 
 describe('LinkedList', () => {
