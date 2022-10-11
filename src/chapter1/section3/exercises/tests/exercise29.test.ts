@@ -17,7 +17,7 @@ describe('Queue with circular linked list implementation', () => {
     expect(queue.size).toBe(1)
     queue.enqueue('🌽')
     expect(queue.size).toBe(2)
-    console.log(queue)
+    expect(queue.peek).toBe('🌽')
   })
 
   it('can dequeue items', () => {

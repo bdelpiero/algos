@@ -21,7 +21,7 @@ export default class Queue<Item> {
   }
 
   get peek() {
-    return this.last?.value ?? null
+    return this.last.value
   }
 
   get size() {
@@ -47,12 +47,9 @@ export default class Queue<Item> {
 
     const item = this.last.next
 
-    if (this.last.next === this.last) {
-      this.last.value === null
-      return item!.value
-    }
+    if (this.last.next === this.last) this.last.value === null
+    else this.last.next = this.last.next!.next
 
-    this.last.next = this.last.next!.next
     this.count--
     return item!.value
   }
