@@ -2,8 +2,8 @@ import Node from './Node'
 
 export type INode<Item> = Node<Item> | null
 
-// not added as class method because it works only for string values
-export function buildTextFromList(list: LinkedList<string>) {
+// should be a static method of linkedList
+export function buildTextFromList<Item>(list: LinkedList<Item>) {
   let listAfterRemove = ''
 
   for (const item of list) {
