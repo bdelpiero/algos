@@ -1,19 +1,29 @@
-import { arrayFromFile } from '../../utils/readFile'
-import { promptRevursively } from '../../utils/run'
+//import { arrayFromFile } from '../../../utils/readFile'
+import { promptRevursively } from '../../../utils/run'
 
-function rank(
+function rank(a: number[], key: number) {
+  let lo = 0
+  let hi = a.length - 1
+  while (lo <= hi) {
+    const mid = lo + Math.floor((hi - lo) / 2)
+    if (key < a[mid]) hi = mid - 1
+    else if (key > a[mid]) lo = mid + 1
+    else return mid
+  }
+  return -1
+}
+
+function rankRecursive(
   key: number,
   a: number[],
   lo: number = 0,
   hi: number = a.length - 1,
   depth: number = 0
 ): number {
-  const currentTrace = `${' '.repeat(depth)}` + lo + '' + hi
-
   if (lo > hi) return -1
   const mid = Math.floor(lo + (hi - lo) / 2)
-  if (key < a[mid]) return rank(key, a, lo, mid - 1, depth + 1)
-  else if (key > a[mid]) return rank(key, a, mid + 1, hi, depth + 1)
+  if (key < a[mid]) return rankRecursive(key, a, lo, mid - 1, depth + 1)
+  else if (key > a[mid]) return rankRecursive(key, a, mid + 1, hi, depth + 1)
   else return mid
 }
 
@@ -27,11 +37,16 @@ function wrapper(fn: Function, ...rest: any[]) {
   }
 }
 
-function main() {
+/* function main() {
   const file = arrayFromFile()
   const sortedFile = file.sort().filter((char) => char !== '')
-  const wrappedCall = wrapper(rank, sortedFile)
+  const wrappedCall = wrapper(rankRecursive, sortedFile)
   promptRevursively(wrappedCall, undefined, undefined)
 }
 
-main()
+main() */
+
+export const binarySearch = {
+  rank,
+  rankRecursive,
+}
